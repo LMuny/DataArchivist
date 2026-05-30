@@ -10,10 +10,10 @@ if __name__ == "__main__":
         print(f"Accessing file '{filename}'")
         try:
             f: IO[str] = open(filename, "r")
-            content = str = f.read()
-            print("---")
+            content: str = f.read()
+            print("---\n")
             print(content, end="")
-            print("---")
+            print("\n---")
             f.close()
             print(f"File '{filename}'closed.")
         except Exception as e:

@@ -12,8 +12,8 @@ if __name__ == "__main__":
             f: IO[str] = open(filename, "r")
             content: str = f.read()
             print("---\n")
-            print(content, end="")
-            print("\n---")
+            print(content)
+            print("---")
             f.close()
             print(f"File '{filename}'closed.")
         except Exception as e:

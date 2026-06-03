@@ -11,8 +11,8 @@ if __name__ == "__main__":
             f: IO[str] = open(filename, "r")
             content: str = f.read()
             print("---\n")
-            print(content)
-            print("---")
+            print(content, end="")
+            print("\n---")
             f.close()
             print(f"File '{filename} 'closed.\n")
             lines: list[str] = content.split("\n")
@@ -24,7 +24,9 @@ if __name__ == "__main__":
             print("Transform Data:\n---\n")
             print(new_content)
             print("\n---")
-            new_file: str = input("Enter new file name (or empty):")
+            sys.stdout.write("Enter new file name (or empty):")
+            sys.stdout.flush()
+            new_file: str = sys.stdin.readline().strip()
             if new_file == "":
                 print("Not saving data.")
             else:
@@ -35,8 +37,9 @@ if __name__ == "__main__":
                     f2.close()
                     print(f"Data saved in file '{new_file}'")
                 except Exception as e:
-                    print(f"Error opening file '{filename}': {e}")
-                    print("Data not saved.")
+                    sys.stderr.write(f"[STDERR] Error opening"
+                                     f" file '{filename}': {e}")
+                    sys.stderr.write("Data not saved.")
         except Exception as e:
 
-            print(f"Error opening file '{filename}': {e}")
+            sys.stderr.write(f"[STDERR] Error opening file '{filename}': {e}")
